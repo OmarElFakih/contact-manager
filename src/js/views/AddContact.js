@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { Context } from "../store/appContext";
+
 export const AddContact = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="container">
 			<div>
@@ -9,7 +13,13 @@ export const AddContact = () => {
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Full Name" />
+						<input
+							type="text"
+							className="form-control"
+							placeholder="Full Name"
+							onChange={e => actions.SetNewContactProperty("full_name", e.target.value)}
+							value={store.newContact.full_name}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Email</label>
@@ -23,7 +33,10 @@ export const AddContact = () => {
 						<label>Address</label>
 						<input type="text" className="form-control" placeholder="Enter address" />
 					</div>
-					<button type="button" className="btn btn-primary form-control">
+					<button
+						type="button"
+						className="btn btn-primary form-control"
+						onClick={console.log(store.newContact)}>
 						save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">

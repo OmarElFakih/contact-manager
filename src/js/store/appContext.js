@@ -30,7 +30,11 @@ const injectContext = PassedComponent => {
 			 * state.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-		}, []);
+			if (state.executeEffect) {
+				state.GetData();
+				state.setState({ executeEffect: false });
+			}
+		}, [state.executeEffect]);
 
 		// the initial value for the context its not null anymore, but the current state of this component,
 		// the context will have a getStore and setStore functions available then, because they were declared
