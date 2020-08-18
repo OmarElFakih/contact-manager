@@ -31,10 +31,12 @@ const injectContext = PassedComponent => {
 			 *
 			 **/
 			if (state.executeEffect) {
-				state.GetData();
+				console.log("entered useEffect");
+				state.GetData("OmarElFakih");
 				state.setState({ executeEffect: false });
+				console.log("useEffect executed");
 			}
-		}, [state.executeEffect]);
+		}, []);
 
 		// the initial value for the context its not null anymore, but the current state of this component,
 		// the context will have a getStore and setStore functions available then, because they were declared

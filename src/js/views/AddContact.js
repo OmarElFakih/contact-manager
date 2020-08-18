@@ -23,20 +23,41 @@ export const AddContact = () => {
 					</div>
 					<div className="form-group">
 						<label>Email</label>
-						<input type="email" className="form-control" placeholder="Enter email" />
+						<input
+							type="email"
+							className="form-control"
+							placeholder="Enter email"
+							onChange={e => actions.SetNewContactProperty("email", e.target.value)}
+							value={store.newContact.email}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Phone</label>
-						<input type="phone" className="form-control" placeholder="Enter phone" />
+						<input
+							type="phone"
+							className="form-control"
+							placeholder="Enter phone"
+							onChange={e => actions.SetNewContactProperty("phone", e.target.value)}
+							value={store.newContact.phone}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Address</label>
-						<input type="text" className="form-control" placeholder="Enter address" />
+						<input
+							type="text"
+							className="form-control"
+							placeholder="Enter address"
+							onChange={e => actions.SetNewContactProperty("address", e.target.value)}
+							value={store.newContact.address}
+						/>
 					</div>
 					<button
 						type="button"
 						className="btn btn-primary form-control"
-						onClick={console.log(store.newContact)}>
+						onClick={e => {
+							console.log(store.newContact);
+							actions.AddContact();
+						}}>
 						save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">
